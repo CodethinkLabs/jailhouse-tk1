@@ -20,8 +20,8 @@ git clone --branch $KERNELVER --depth 1 git://git.kernel.org/pub/scm/linux/kerne
 #Apply patches: config file to ensure kernel compatability with TK1 in HYP mode
 #armksysms.c file is to export kernel symbol that is required for jailhouse operation
 cd linux-stable
-cp $VAGRANTDIR/.config .
-cp $VAGRANTDIR/armksyms.c arch/arm/kernel/
+cp $VAGRANTDIR/kernel_config/.config .
+cp $VAGRANTDIR/kernel_config/armksyms.c arch/arm/kernel/
 
 #make the kernel
 #Apply: zImage, dtb files, modules, firmware and header to a specified rootfs

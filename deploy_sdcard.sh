@@ -25,7 +25,7 @@ then echo "rootfs folder not found"
 fi
 
 mkdir -p rootfs/boot/extlinux
-cp extlinux.conf rootfs/boot/extlinux
+cp kernel_config/extlinux.conf rootfs/boot/extlinux
 
 mkdir -p $MOUNTPOINT
 mount $SDCARD $MOUNTPOINT
