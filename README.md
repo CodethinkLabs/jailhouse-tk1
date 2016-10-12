@@ -17,3 +17,5 @@ Future goals include being able to deploy the complete system using Baserock. At
 ``` shell
 sudo ./deploy_sdcard.sh /path/to/sdcard
 ```
+
+Note that path/to/sdcard denotes the device name in /dev as opposed to a mount point.
