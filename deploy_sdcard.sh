@@ -15,7 +15,7 @@ then
     exit 1
 fi
 
-#Build kernel using cross-compile vagrant box, then 
+#Build using cross-compile vagrant box, then 
 #deploy generated files to sdcard
 vagrant up
 

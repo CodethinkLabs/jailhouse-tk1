@@ -19,4 +19,6 @@ cd jailhouse
 cp $VAGRANTDIR/jailhouse_config/jetson-tk1.c configs/jetson-tk1.c
 cp $VAGRANTDIR/jailhouse_config/config.h hypervisor/include/jailhouse/config.h
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR
-make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR DESTDIR=$DESTDIR install
+make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR DESTDIR=$VAGRANTDIR/$DESTDIR install
+mkdir -p $VAGRANTDIR/$DESTDIR/usr/src/jailhouse
+cp -ar configs $VAGRANTDIR/$DESTDIR/usr/src/jailhouse
