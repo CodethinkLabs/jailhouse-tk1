@@ -27,10 +27,10 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y libtool libc6-i386 lib32stdc++6 lib32z1 pkg-config libwayland-dev bison flex bc 
     sudo apt-get install -y glib-2.0 libffi-dev xutils-dev python-mako intltool libxml2-dev
 
-    git clone --branch "staging/work" git@github.com:Gnurou/nouveau.git
+    git clone --branch "staging/work" https://github.com/Gnurou/nouveau.git
     git clone git://anongit.freedesktop.org/xcb/pthread-stubs
-    git clone --branch "fb_modifiers" git@github.com:Gnurou/drm.git
-    git clone --branch tegra git@github.com:Gnurou/mesa.git
+    git clone --branch "fb_modifiers" https://github.com/Gnurou/drm.git
+    git clone --branch "tegra" https://github.com/Gnurou/mesa.git
     git clone --branch "fb_modifiers" git@github.com:Gnurou/kmscube.git
   SHELL
 
