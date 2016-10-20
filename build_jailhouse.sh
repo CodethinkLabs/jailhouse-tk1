@@ -18,7 +18,7 @@ git clone https://github.com/siemens/jailhouse.git
 cd jailhouse
 cp $VAGRANTDIR/jailhouse_config/jetson-tk1.c configs/jetson-tk1.c
 cp $VAGRANTDIR/jailhouse_config/config.h hypervisor/include/jailhouse/config.h
-make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR
-make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR DESTDIR=$VAGRANTDIR/$DESTDIR install
+make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- O=$KDIR -C $VAGRANTDIR/linux-stable M=. modules 
+make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- O=$KDIR -C $VAGRANTDIR/linux-stable M=. DESTDIR=$VAGRANTDIR/$DESTDIR modules_install
 mkdir -p $VAGRANTDIR/$DESTDIR/usr/src/jailhouse
 cp -ar configs $VAGRANTDIR/$DESTDIR/usr/src/jailhouse

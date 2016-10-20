@@ -1,7 +1,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "debian/contrib-jessie64"
   config.vm.network "private_network", type: "dhcp"
-  config.vm.synced_folder ".", "/src/kernel"
+  config.vm.synced_folder "..", "/src/kernel"
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     #vb.gui = true
@@ -10,9 +10,10 @@ Vagrant.configure(2) do |config|
     vb.cpus = "4"
   end
 
-  config.vm.provision "shell" do |s|
-      s.inline = "/src/kernel/vagrant_build.sh $1 $2"
-      s.args = ["/src/kernel v4.8"]
-  end
+  config.vm.provision "shell", inline: <<-SHELL
+      sudo -i
+      /src/kernel/cross_compile_setup.sh
+      /src/kernel/build_kernel.sh "/src/kernel/" "v4.8" "NONE"
+  SHELL
   
 end

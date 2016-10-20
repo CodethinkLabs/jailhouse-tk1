@@ -20,18 +20,20 @@ git clone --branch $KERNELVER --depth 1 git://git.kernel.org/pub/scm/linux/kerne
 
 #Apply patches: config file to ensure kernel compatability with TK1 in HYP mode
 #armksysms.c file is to export kernel symbol that is required for jailhouse operation
+# We will also apply a new version of nouveau, but *only* if $KERNELVER is >4.8
 cd linux-stable
-cp $VAGRANTDIR/kernel_config/.config .
+cp $VAGRANTDIR/kernel_config/newconfig4.8 .config
 cp $VAGRANTDIR/kernel_config/armksyms.c arch/arm/kernel/
 
-#make the kernel
-#Apply: zImage, dtb files, modules, firmware and header to a specified rootfs
-make -j4 ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- -k
+if [ "$KERNELVER" = "v4.8" ]
+then
+    echo "Applying new Nouveau drm"
+    rsync -avH $VAGRANTDIR/nouveau/drm/nouveau/ drivers/gpu/drm/nouveau/
+fi
 
-mkdir -p $VAGRANTDIR/$KDIR/boot
-cp arch/arm/boot/zImage $VAGRANTDIR/$KDIR/boot/
-cp arch/arm/boot/dts/*.dtb $VAGRANTDIR/$KDIR/boot/
-make -j4 ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- INSTALL_MOD_PATH=$VAGRANTDIR/$KDIR modules_install
-make -j4 ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- INSTALL_FW_PATH=$VAGRANTDIR/$KDIR/lib/firmware firmware_install
-make -j4 ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- INSTALL_HDR_PATH=$VAGRANTDIR/$KDIR/usr headers_install
+
+if [ $KDIR != "NONE" ]
+then
+    $VAGRANTDIR/make_kernel.sh $VAGRANTDIR $KDIR
+fi
 
