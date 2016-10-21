@@ -19,3 +19,15 @@ sudo ./deploy_sdcard.sh /path/to/sdcard
 ```
 
 Note that path/to/sdcard denotes the device name in /dev as opposed to a mount point.
+
+### Testing jailhouse functionality
+There is a script located in /home/ubuntu that:
+- Loads the jailhouse kernel module
+- Creates a root cell
+- Loads a non-root cell
+- Executes an example binary, outputting to UART.
+
+To execute:
+``` shell
+sudo ./jailhouse_uart_demo.sh
+``` 
