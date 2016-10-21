@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ "$EUID" -ne 0 ]
 then echo "Please run as root"
         exit 1
@@ -7,6 +9,10 @@ fi
 
 SDCARD=$1
 MOUNTPOINT=/media/sdcard
+
+echo "cleaning up folders if there's been a previous build"
+./cleanup.sh
+echo "clean up complete"
 
 ./create_linux_sys.sh $SDCARD
 if [ $? -ne 0 ]
