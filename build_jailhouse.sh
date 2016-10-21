@@ -24,3 +24,4 @@ make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR
 make ARCH=arm CROSS_COMPILE=/usr/bin/arm-linux-gnueabihf- KDIR=$KDIR DESTDIR=$VAGRANTDIR/$DESTDIR install
 mkdir -p $VAGRANTDIR/$DESTDIR/usr/src/jailhouse
 cp -ar configs $VAGRANTDIR/$DESTDIR/usr/src/jailhouse
+cp -ar inmates $VAGRANTDIR/$DESTDIR/usr/src/jailhouse
