@@ -35,7 +35,7 @@ mkdir -p rootfs/etc/init
 mkdir -p rootfs/home/ubuntu
 cp kernel_config/extlinux.conf rootfs/boot/extlinux
 cp kernel_config/ttyS0.conf rootfs/etc/init
-cp jailhouse_config/jailhouse_uart_demo.sh rootfs/home/ubuntu
+cp jailhouse_config/*.sh rootfs/home/ubuntu
 
 mkdir -p $MOUNTPOINT
 mount $SDCARD $MOUNTPOINT
