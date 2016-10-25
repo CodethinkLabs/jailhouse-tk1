@@ -30,4 +30,16 @@ There is a script located in /home/ubuntu that:
 To execute:
 ``` shell
 sudo ./jailhouse_uart_demo.sh
-``` 
+```
+
+### Testing freeRTOS functionality
+We have created a fork of the freeRTOS cell for jailhouse https://github.com/CodethinkLabs/freertos-cell that will 
+enable its use on the TK1
+
+It is built along with jailhouse and performs some test tasks. Note that at the moment, FPU calculations are not supported.
+
+Scripts are located in /home/ubuntu. To execute:
+``` shell
+sudo ./freertos_demo.sh
+```
+ 
