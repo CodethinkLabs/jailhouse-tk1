@@ -19,7 +19,7 @@ git clone https://github.com/siemens/jailhouse.git
 #Clone freeRTOS. We want to copy over specific non-root cell,
 #to be built during a jailhouse build
 git clone -b jetson-tk1 https://github.com/CodethinkLabs/freertos-cell.git
-cp freertos-cell/jailhouse-configs/*.c ../jailhouse/configs/
+cp freertos-cell/jailhouse-configs/*.c jailhouse/configs/
 
 #Copy TK1 specific files over and make and install jailhouse
 cd jailhouse
