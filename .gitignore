@@ -3,4 +3,5 @@ Linux_for_Tegra/
 rootfs
 linux-firmware
 linux-stable
+nouveau
 .vagrant/
