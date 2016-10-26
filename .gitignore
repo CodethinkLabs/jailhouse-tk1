@@ -1,4 +1,6 @@
 *.tbz2
 Linux_for_Tegra/
 rootfs
+linux-firmware
+linux-stable
 .vagrant/
