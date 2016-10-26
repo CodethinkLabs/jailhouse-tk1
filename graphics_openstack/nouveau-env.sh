@@ -2,7 +2,7 @@
 DEV_HOME=/home/vagrant
 NVD=/home/vagrant/install       
 LD_LIBRARY_PATH=$NVD/lib
-PKG_CONFIG_PATH=$NVD/lib/pkgconfig/:$NVD/share/pkgconfig/
+PKG_CONFIG_PATH=$NVD/lib/pkgconfig/:$NVD/share/pkgconfig/:/usr/lib/arm-linux-gnueabihf/pkgconfig/
 ACLOCAL="aclocal -I $NVD/share/aclocal"
 
 DRM_SETTINGS="--disable-cairo-tests \

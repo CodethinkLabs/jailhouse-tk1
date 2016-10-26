@@ -1,5 +1,5 @@
-MESA_DEPS="libdrm-dev:armhf      
-libdrm-nouveau2:armhf   
+
+MESA_DEPS="libdrm-nouveau2:armhf 
 libdrm2:armhf   
 libelf-dev:armhf    
 libelf1:armhf   
@@ -49,5 +49,5 @@ libxxf86vm-dev:armhf
 libxext-dev:armhf
 libwayland-dev:armhf"
 
-export $MESA_DEPS
+export MESA_DEPS
 
