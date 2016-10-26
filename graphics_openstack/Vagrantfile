@@ -47,6 +47,24 @@ Vagrant.configure(2) do |config|
     mkdir libwayland-dev_amd64
     dpkg-deb -x libwayland-dev_1.6.0-2_amd64.deb libwayland-dev_amd64/
     cp libwayland-dev_amd64/usr/bin/wayland-scanner /usr/bin/
+
+    #Make all your packages
+    declare -a packages=("pthread-stubs" "drm" "mesa" "kmscube")
+    for package in "${packages[@]}"
+    do
+       SETTINGS=""
+       cd "$package"
+       echo "building and installing $package"
+       if [ $package = "drm" ];
+       then 
+            SETTINGS=$DRM_SETTINGS
+       elif [ $package = "mesa" ];
+       then
+            SETTINGS=$MESA_SETTINGS
+       fi
+       /src/install_package.sh -h $HOST -p $NVD -s "$SETTINGS" -n 4
+       cd ..
+    done
   SHELL
   
 end
