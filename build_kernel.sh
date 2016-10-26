@@ -20,9 +20,16 @@ git clone --branch $KERNELVER --depth 1 git://git.kernel.org/pub/scm/linux/kerne
 
 #Apply patches: config file to ensure kernel compatability with TK1 in HYP mode
 #armksysms.c file is to export kernel symbol that is required for jailhouse operation
+# We will also apply a new version of nouveau, but *only* if $KERNELVER is >4.8
 cd linux-stable
-cp $VAGRANTDIR/kernel_config/.config .
+cp $VAGRANTDIR/kernel_config/newconfig4.8 .config
 cp $VAGRANTDIR/kernel_config/armksyms.c arch/arm/kernel/
+
+if [ "$KERNELVER" = "v4.8" ]
+then
+    echo "Applying new Nouveau drm"
+    rsync -avH $VAGRANTDIR/nouveau/drm/nouveau/ drivers/gpu/drm/nouveau/
+fi
 
 #make the kernel
 #Apply: zImage, dtb files, modules, firmware and header to a specified rootfs

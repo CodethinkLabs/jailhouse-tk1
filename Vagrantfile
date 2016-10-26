@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell" do |s|
       s.inline = "/src/kernel/vagrant_build.sh $1 $2"
-      s.args = ["/src/kernel v4.4.23"]
+      s.args = ["/src/kernel v4.8"]
   end
   
 end
