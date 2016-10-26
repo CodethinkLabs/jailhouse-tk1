@@ -28,7 +28,7 @@ cp $VAGRANTDIR/kernel_config/armksyms.c arch/arm/kernel/
 if [ "$KERNELVER" = "v4.8" ]
 then
     echo "Applying new Nouveau drm"
-    git clone git clone --branch "staging/work" https://github.com/Gnurou/nouveau.git $VAGRANTDIR/nouveau
+    git clone --branch "staging/work" https://github.com/Gnurou/nouveau.git $VAGRANTDIR/nouveau
     rsync -avH $VAGRANTDIR/nouveau/drm/nouveau/ drivers/gpu/drm/nouveau/
 fi
 
