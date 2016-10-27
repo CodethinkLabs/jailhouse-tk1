@@ -4,8 +4,10 @@ NVD=/home/vagrant/install
 LD_LIBRARY_PATH=$NVD/lib
 PKG_CONFIG_PATH=$NVD/lib/pkgconfig/:$NVD/share/pkgconfig/:/usr/lib/arm-linux-gnueabihf/pkgconfig/
 ACLOCAL="aclocal -I $NVD/share/aclocal"
+DEST=/opt/nouveau
 
-DRM_SETTINGS="--disable-cairo-tests \
+DRM_SETTINGS=" --enable-tegra-experimental-api \
+--disable-cairo-tests \
 --disable-intel \
 --disable-radeon \
 --disable-vmwgfx \
@@ -30,4 +32,4 @@ MESA_SETTINGS="--without-dri-drivers \
 
 HOST=arm-linux-gnueabihf
 
-export DEV_HOME NVD LD_LIBRARY_PATH PKG_CONFIG_PATH ACLOCAL HOST DRM_SETTINGS MESA_SETTINGS
+export DEV_HOME NVD LD_LIBRARY_PATH PKG_CONFIG_PATH ACLOCAL HOST DRM_SETTINGS MESA_SETTINGS DEST
