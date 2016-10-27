@@ -22,7 +22,7 @@ git clone --branch $KERNELVER --depth 1 git://git.kernel.org/pub/scm/linux/kerne
 #armksysms.c file is to export kernel symbol that is required for jailhouse operation
 # We will also apply a new version of nouveau, but *only* if $KERNELVER is >4.8
 cd linux-stable
-cp $VAGRANTDIR/kernel_config/newconfig4.8-updated .config
+cp $VAGRANTDIR/kernel_config/.config .config
 cp $VAGRANTDIR/kernel_config/armksyms.c arch/arm/kernel/
 
 if [ "$KERNELVER" = "v4.8" ]
