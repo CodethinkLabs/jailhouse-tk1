@@ -29,7 +29,7 @@ Vagrant.configure(2) do |config|
 
     #Clone the relevant libraries
     git clone git://anongit.freedesktop.org/xcb/pthread-stubs
-    git://anongit.freedesktop.org/mesa/drm
+    git clone git://anongit.freedesktop.org/mesa/drm
     git clone git://anongit.freedesktop.org/mesa/mesa
     git clone --branch "gk20a" https://github.com/Gnurou/kmscube.git
     
