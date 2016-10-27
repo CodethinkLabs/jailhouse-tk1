@@ -21,6 +21,9 @@ Vagrant.configure(2) do |config|
     sudo dpkg --add-architecture armhf
     sudo apt-get update
     apt-get install -y crossbuild-essential-armhf
+
+    #Install deps for rootfs library building
+    apt-get install -y proot qemu binfmt-support qemu-user-static
   SHELL
   
 end
