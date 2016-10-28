@@ -24,6 +24,14 @@ Vagrant.configure(2) do |config|
 
     #Install deps for rootfs library building
     apt-get install -y proot qemu binfmt-support qemu-user-static
+
+    #Get customised tegra scripts for L4T and setup environment
+    echo "Setting up envinroment for tegra rootfs scripts and extracting L4T FS"
+    cat /src/script_env.sh >> ~/.profile && source ~/.profile
+    cd $TOP 
+    git clone --branch l4t https://github.com/cphang99/tegra-rootfs-scripts.git scripts
+    mkdir -p $TOP/out/target/arm/$DISTRO
+    tar xpf /src/$L4T_FS -C $TOP/out/target/arm/$DISTRO
   SHELL
   
 end
