@@ -1,7 +1,7 @@
 Vagrant.configure(2) do |config|  
   config.vm.box= "debian/contrib-jessie64"
   config.vm.network "private_network", type: "dhcp"
-  config.vm.synced_folder ".", "/src"
+  config.vm.synced_folder "..", "/src"
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     #vb.gui = true
@@ -26,21 +26,14 @@ Vagrant.configure(2) do |config|
     apt-get install -y autoconf automake 
     apt-get install -y libtool pkg-config bison flex bc 
     apt-get install -y glib-2.0 python-mako intltool xutils-dev
-
-    #Clone the relevant libraries
-    git clone git://anongit.freedesktop.org/xcb/pthread-stubs
-    git clone git://anongit.freedesktop.org/mesa/drm
-    git clone git://anongit.freedesktop.org/mesa/mesa
-    git clone --branch "gk20a" https://github.com/Gnurou/kmscube.git
     
     #Source environment variables to .profile
-    cat /src/nouveau-env.sh >> ~/.profile
-    cat /src/mesa_deps.sh >> ~/.profile
+    cat /src/setup_rootfs/script_env.sh >> ~/.profile
     source ~/.profile
-    
-    #Build deps
-    apt-get install -y $MESA_DEPS
-    mkdir -p /home/vagrant/install
+
+    #Get tegra scripts to build stack and clone relevant libraries
+    cd $TOP
+    git clone --branch l4t https://github.com/cphang99/tegra-rootfs-scripts.git scripts
 
     #We need to use wayland scanner from native libwayland-dev (from ubuntu disto) but the armhf libaries from libwayland-dev:armhf
     wget http://launchpadlibrarian.net/188497486/libwayland-dev_1.6.0-2_amd64.deb
@@ -48,27 +41,16 @@ Vagrant.configure(2) do |config|
     dpkg-deb -x libwayland-dev_1.6.0-2_amd64.deb libwayland-dev_amd64/
     cp libwayland-dev_amd64/usr/bin/wayland-scanner /usr/bin/
 
-    #Make all your packages
-    declare -a packages=("pthread-stubs" "drm" "mesa" "kmscube")
-    for package in "${packages[@]}"
-    do
-       SETTINGS=""
-       cd "$package"
-       echo "building and installing $package"
-       if [ $package = "drm" ];
-       then 
-            SETTINGS=$DRM_SETTINGS
-       elif [ $package = "mesa" ];
-       then
-            SETTINGS=$MESA_SETTINGS
-       fi
-       /src/install_package.sh -h $HOST -p $NVD -s "$SETTINGS" -n 4
-       cd ..
-    done
+    #Clone the relevant libraries
+    git clone git://anongit.freedesktop.org/xcb/pthread-stubs
+    git clone git://anongit.freedesktop.org/mesa/drm
+    git clone --depth 1 --branch mesa-12.0.2 git://anongit.freedesktop.org/mesa/mesa
+    git clone --branch "gk20a" https://github.com/Gnurou/kmscube.git
 
-    #Once built, adjust pkg-config paths
-    cd $NVD/lib/pkgconfig
-    sed -i 's|/home/vagrant/install|$DEST|g' *.pc
+    echo "Extracting rootfs"
+    mkdir -p out/target/arm/$DISTRO
+    tar xpf /src/l4tFS_prepared.tbz2 -C out/target/arm/$DISTRO
+     
   SHELL
   
 end
