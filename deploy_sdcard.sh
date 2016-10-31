@@ -14,6 +14,12 @@ echo "cleaning up folders if there's been a previous build"
 ./cleanup.sh
 echo "clean up complete"
 
+
+echo "Creating open-source graphics stack on L4T FS"
+cd graphics_openstack
+vagrant up
+cd ..
+
 ./create_linux_sys.sh $SDCARD
 if [ $? -ne 0 ]
 then

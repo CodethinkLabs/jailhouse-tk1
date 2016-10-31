@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
     cd out/target/arm/$DISTRO/
     tar cpjf /home/${PREPARED_ROOTFS_NAME} .
     cd $TOP
-    cp ${PREPARED_ROOTFS_NAME} /src/graphics_openstack
+    cp ${PREPARED_ROOTFS_NAME} /src
     echo "Preparation of rootfs complete!"
   SHELL
   
