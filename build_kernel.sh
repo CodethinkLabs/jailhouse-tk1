@@ -4,6 +4,7 @@
 #
 #Jailhouse fix: https://github.com/siemens/jailhouse/blob/master/Documentation/setup-on-banana-pi-arm-board.md
 #Compatible linux configuration: https://wiki.sel4.systems/Hardware/jetsontk1
+#Tegra tiling patch: https://github.com/Gnurou/linux/commit/8b06bf92b8da6bee92c3a2a8eaccd74ed3dd1939
 
 set -e
 
@@ -39,6 +40,9 @@ else
     cd -
 fi
 rsync -avH $VAGRANTDIR/nouveau/drm/nouveau/ drivers/gpu/drm/nouveau/
+
+#Applying patches for tegra tiling
+git apply $VAGRANTDIR/kernel_config/tegra_fb.patch
 
 #make the kernel
 #Apply: zImage, dtb files, modules, firmware and header to a specified rootfs
