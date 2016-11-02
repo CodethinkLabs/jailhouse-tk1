@@ -94,7 +94,7 @@ struct {
         /* HACK: GPU */ {
                 .phys_start = 0x57000000,
                 .virt_start = 0x57000000,
-                .size = 0x01000000,
+                .size = 0x02000000,
                 .flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
                         JAILHOUSE_MEM_IO,
         },
