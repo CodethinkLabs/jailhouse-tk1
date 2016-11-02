@@ -8,7 +8,7 @@ cp libwayland-dev_amd64/usr/bin/wayland-scanner /usr/bin/
 
 #Clone the relevant libraries
 git clone git://anongit.freedesktop.org/xcb/pthread-stubs
-git clone git://anongit.freedesktop.org/mesa/drm
+git clone --depth 1 --branch "fb_modifiers" https://github.com/Gnurou/drm.git
 git clone --depth 1 --branch "mesa-12.0.2" git://anongit.freedesktop.org/mesa/mesa
-git clone --branch "gk20a" https://github.com/Gnurou/kmscube.git
+git clone --branch "fb_modifiers" https://github.com/Gnurou/kmscube.git
 
