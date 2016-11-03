@@ -42,4 +42,11 @@ Scripts are located in /home/ubuntu. To execute:
 ``` shell
 sudo ./freertos_demo.sh
 ```
- 
+
+### Testing nouveau open-source graphics stack
+Builds now include the nouveau graphics stack (See https://github.com/NVIDIA/tegra-nouveau-rootfs.) To test this, 
+kmscube is present in the system. To execute:
+```shell
+kmscube
+```
+kmscube can be run in conjunction with other non-root cells (such as a running freeRTOS binary).
