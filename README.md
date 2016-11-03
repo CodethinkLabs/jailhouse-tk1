@@ -5,7 +5,9 @@ The goal is to develop a complete build: linux kernel, file system and jailhouse
 
 Although there is documented support of the Jetson-TK1 for Jailhouse (also see https://blog.ramses-pyramidenbau.de/?p=342), this brings together kernel fixes and modifications to the root cell required for operation. 
 
-Future goals include being able to deploy the complete system using Baserock. At the moment, all of the individual components are built using debian CrossToolchains within vagrant boxes. 
+Future goals include being able to deploy the complete system using Baserock. At the moment, all of the individual components are built using debian CrossToolchains within vagrant boxes.
+
+A working demonstration of the build is shown here: https://vimeo.com/190110057
 
 ## Requirements 
 - Vagrant 1.8.5 
