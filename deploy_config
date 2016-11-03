@@ -1,0 +1,5 @@
+#!/bin/bash
+
+PREPARED_ROOTFS_NAME=l4t_prepared_rootfs.tbz2
+
+export PREPARED_ROOTFS_NAME

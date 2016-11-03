@@ -14,6 +14,17 @@ echo "cleaning up folders if there's been a previous build"
 ./cleanup.sh
 echo "clean up complete"
 
+
+echo "Creating open-source graphics stack on L4T FS"
+cd graphics_openstack
+L4T_FS=l4t-Jetson-TK1-Sample-Root-Filesystem-R21-5.tbz2
+if [ !  -f "$L4T_FS" ]
+then
+    wget "http://developer.download.nvidia.com/embedded/L4T/r21_Release_v5.0/Tegra124_Linux_R21.5.0_armhf.tbz2"
+fi
+vagrant up
+cd ..
+
 ./create_linux_sys.sh $SDCARD
 if [ $? -ne 0 ]
 then

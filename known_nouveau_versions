@@ -1,0 +1,22 @@
+
+This documents known good nouveau commits from gnurou/nouveau depending on the
+kernel being built, and in the absence of a tag specifying this.
+
+Linux 4.4.23 -> Nouveau 5c546b809288bcd4fbcdd7c6329d79f6ab8d4c82
+
+Git bisect run:
+09b6145ca607f61472c08807326114e49fa9227b is the first bad commit
+commit 09b6145ca607f61472c08807326114e49fa9227b
+Author: Ben Skeggs <bskeggs@redhat.com>
+Date:   Mon Jan 11 11:08:24 2016 +1000
+
+    drm-next c11b8989635166c5a1e6aac1853a847bd664f8db
+    
+    gr/nv40: fix oops in interrupt handler
+    
+    fdo#93557
+    
+    Signed-off-by: Ben Skeggs <bskeggs@redhat.com>
+
+:040000 040000 ecdc7ff298652a89bc705c9463d1b31ae6e077a0 8785c51788604f34921496b22e9a70073c781552 M  drm
+bisect run success
