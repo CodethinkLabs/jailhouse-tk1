@@ -10,7 +10,7 @@ Future goals include being able to deploy the complete system using Baserock. At
 ## Requirements 
 - Vagrant 1.8.5 
 - Virtualbox 5.1, 
-- a recent version of UBoot on the Jetson TK1 (to enable CPU HYP mode). 
+- a recent version of UBoot on the Jetson TK1 (to enable CPU HYP mode). (https://github.com/cphang99/uboot-TK1) 
 - An ext4 SDcard of at least 4GB in size
 
 ##Usage 
